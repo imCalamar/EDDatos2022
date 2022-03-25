@@ -3,19 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pila2022;
+package estatica;
 
 /**
  *
  * @author Joaquin.coder
  */
-public class PilaEstatica {
+public class Pila {
     
     private Object[] arreglo;
     private int tope;
     private static final int TAM=20;
     
-    public PilaEstatica(){
+    public Pila(){
         this.arreglo=new Object[TAM];
         this.tope=-1;
     }
@@ -42,13 +42,15 @@ public class PilaEstatica {
         }
         return res;
     }
-    public int obtenerTope(){
-        //
+    public Object obtenerTope(){
+        
+        Object res;
         if(this.tope==-1){
-            return -1;
+            res=-1;
         }else{
-            return tope;
+            res=this.arreglo[tope];
         }
+        return res;
     }
     public boolean esVacia(){
         //
@@ -61,19 +63,17 @@ public class PilaEstatica {
     public void vaciar(){
         this.tope=-1;
     }
-    public PilaEstatica clonar(){
-        PilaEstatica nuevaPila = new PilaEstatica();
+    public Pila clonarPila(){
+        Pila nuevaPila = new Pila();
         nuevaPila.arreglo=this.arreglo;
         return nuevaPila;
     }
-    public String cadena(){
+    public String toString(){
         String cad="";
         int i;
         for(i=0;i<=tope;i++){
-            cad= Integer.toString((int) this.arreglo[i]);
-            System.out.print(cad);
+            cad= this.arreglo[i].toString();
         }
-        System.out.println("");
         return cad;
     }
     public boolean capicua(){

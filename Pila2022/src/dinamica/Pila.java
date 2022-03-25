@@ -3,21 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pila2022;
+package dinamica;
 
 /**
  *
  * @author Joaquin.coder
  */
-public class PilaInt {
+public class Pila {
 
     private Nodo tope;
 
-    public PilaInt() {
+    public Pila() {
         this.tope = null;
     }
 
-    public boolean apilar(int nuevoElem) {
+    public boolean apilar(Object nuevoElem) {
         Nodo nodoNuevo = new Nodo(nuevoElem, this.tope);
         this.tope = nodoNuevo;
         return true;
@@ -49,8 +49,8 @@ public class PilaInt {
         this.tope = null;
     }
     
-    public PilaInt clonarPila() {
-        PilaInt clon = new PilaInt();
+    public Pila clonarPila() {
+        Pila clon = new Pila();
         if (this.tope == null) {
             clon.tope = null;
         } else {
