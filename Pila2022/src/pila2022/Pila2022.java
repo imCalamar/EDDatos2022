@@ -16,16 +16,25 @@ public class Pila2022 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        int cant;     
-        PilaEstatica arrPila;
-        arrPila=new PilaEstatica();
-        System.out.println("¿cuantos valores desea ingresar a la pila?");
-        cant=TecladoIn.readLineInt();
-        cargarPila(arrPila,cant);
-        tarea(arrPila);
+        // TODO code application logic here 
+        int cant;
+        String res;
+        PilaEstatica arrPila=new PilaEstatica();
+        PilaInt pila=new PilaInt();
+        
+        System.out.println("¿estatica(E) o dinamica(D)?");
+        res=TecladoIn.readLine();
+        if (res=="E") {
+            System.out.println("¿cuantos valores desea ingresar a la pila?");
+            cant=TecladoIn.readLineInt();
+            cargarPila(arrPila,cant);
+            tareaPilaEtatica(arrPila); 
+        }else{
+            cargarPila(pila);
+            tareaPilaDinamica(pila);
+        }          
     }
-    public static void tarea(PilaEstatica arrPila){
+    public static void tareaPilaEtatica(PilaEstatica arrPila){
         //
         int seg;
         do{
@@ -61,6 +70,42 @@ public class Pila2022 {
             }
         }while(seg!=-1);
     }
+    
+    public static void tareaPilaDinamica(PilaInt pila){
+        //
+        int seg;
+        do{
+            int s;
+            switch(seg=menu()){ 
+                case 1:
+                    System.out.println("ingrese valor a apilar");
+                    s=TecladoIn.readLineInt();
+                    pila.apilar(s);
+                    break;
+                case 2:
+                    pila.desapilar();
+                    break;
+                case 3:
+                    pila.obtenerTope();
+                    break;
+                case 4:
+                    System.out.println(pila.esVacia());
+                    break;
+                case 5:
+                    pila.vaciar();
+                    break;
+                case 6:
+                    pila.clonarPila();
+                    break;
+                case 7:
+                    pila.toString();
+                    break;
+                default:  
+                    break;
+            }
+        }while(seg!=-1);
+    }
+    
     public static void cargarPila(PilaEstatica arrPila, int cant){
         //
         int i,v;
@@ -70,6 +115,25 @@ public class Pila2022 {
             v=TecladoIn.readLineInt();
             arrPila.apilar(v);
         }
+    }
+    public static void cargarPila(PilaInt pila){
+        //
+        int valor;
+        String res;
+        boolean seguir;
+        do {
+            System.out.println("ingrese las valor");
+            valor=TecladoIn.readLineInt();
+            pila.apilar(valor);
+            System.out.println("desea ingresar mas valores? S/N");
+            res=TecladoIn.readLine();
+            if (res=="S") {
+               seguir=true; 
+            }else{
+                seguir=false;
+            }
+        } while (seguir==true);
+        
     }
     public static int menu(){
         int v;

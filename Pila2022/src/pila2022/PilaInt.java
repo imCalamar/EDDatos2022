@@ -48,7 +48,7 @@ public class PilaInt {
     public void vaciar() {
         this.tope = null;
     }
-
+    
     public PilaInt clonarPila() {
         PilaInt clon = new PilaInt();
         if (this.tope == null) {
