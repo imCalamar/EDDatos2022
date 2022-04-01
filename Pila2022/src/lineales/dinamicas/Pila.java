@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dinamica;
+package lineales.dinamicas;
 
 /**
  *
@@ -34,6 +34,9 @@ public class Pila {
     }
 
     public Object obtenerTope() {
+        if (this.tope==null) {
+            return null;
+        }
         return this.tope.getElemento();
     }
 
@@ -49,7 +52,7 @@ public class Pila {
         this.tope = null;
     }
     
-    public Pila clonarPila() {
+    public Pila clone() {
         Pila clon = new Pila();
         if (this.tope == null) {
             clon.tope = null;
@@ -66,6 +69,7 @@ public class Pila {
                 aux1 = aux1.getEnlace();
             }
         }
+                    System.out.println(clon);
         return clon;
     }
 
@@ -83,7 +87,6 @@ public class Pila {
                 if (aux != null) {
                     cad += ",";
                 }
-
             }
             cad += "]";
         }

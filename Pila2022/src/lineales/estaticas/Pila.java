@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package estatica;
+package lineales.estaticas;
 
 /**
  *
@@ -13,7 +13,7 @@ public class Pila {
     
     private Object[] arreglo;
     private int tope;
-    private static final int TAM=20;
+    private static final int TAM=10;
     
     public Pila(){
         this.arreglo=new Object[TAM];
@@ -43,10 +43,9 @@ public class Pila {
         return res;
     }
     public Object obtenerTope(){
-        
         Object res;
         if(this.tope==-1){
-            res=-1;
+            res=null;
         }else{
             res=this.arreglo[tope];
         }
@@ -63,17 +62,20 @@ public class Pila {
     public void vaciar(){
         this.tope=-1;
     }
-    public Pila clonarPila(){
+    public Pila clone(){
         Pila nuevaPila = new Pila();
-        nuevaPila.arreglo=this.arreglo;
-        return nuevaPila;
-    }
-    public String toString(){
-        String cad="";
         int i;
         for(i=0;i<=tope;i++){
-            cad= this.arreglo[i].toString();
+            nuevaPila.apilar(this.arreglo[i]);
         }
+        return nuevaPila;
+    }
+        public String toString(){
+        String cad="[";
+        for(int i=0;i<=tope;i++){
+            cad= cad+""+this.arreglo[i].toString()+",";
+        }
+        cad= cad+"]";
         return cad;
     }
     public boolean capicua(){
