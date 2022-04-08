@@ -7,11 +7,11 @@ package lineales.estaticas;
 
 /**
  *
- * @author Joaquin.coder
+ * @author Joaquin Arias FAI-1629
  */
 public class Pila {
     
-    private Object[] arreglo;
+    private final Object[] arreglo;
     private int tope;
     private static final int TAM=10;
     
@@ -75,23 +75,7 @@ public class Pila {
         for(int i=0;i<=tope;i++){
             cad= cad+""+this.arreglo[i].toString()+",";
         }
-        cad= cad+"]";
+        cad=cad.substring(0, cad.length()-1)+"]";
         return cad;
     }
-    public boolean capicua(){
-        //
-        int i,j;
-        boolean res=true;
-        Object[] nuevoArr=this.arreglo.clone();
-        i=0; j=this.tope;
-        while(res==true && i<=this.tope/2 && j>=0){
-            if(nuevoArr[j]==arreglo[i]){
-                i++;
-                j--;
-            }else{
-                res=false;
-            }
-        }
-        return res;
-    } 
 }

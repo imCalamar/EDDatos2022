@@ -7,7 +7,7 @@ package lineales.dinamicas;
 
 /**
  *
- * @author Joaquin.coder
+ * @author Joaquin Arias FAI-1629
  */
 public class Pila {
 
@@ -69,26 +69,24 @@ public class Pila {
                 aux1 = aux1.getEnlace();
             }
         }
-                    System.out.println(clon);
         return clon;
     }
 
     public String toString() {
         String cad = "";
-
         if (this.tope == null) {
             cad = "la cadena es vacía";
         } else {
-            cad = "[";
+            cad = "]";
             Nodo aux = this.tope;
             while (aux != null) {
-                cad += aux.getElemento();
+                cad = aux.getElemento()+cad;
                 aux = aux.getEnlace();
                 if (aux != null) {
-                    cad += ",";
+                    cad = ","+cad;
                 }
             }
-            cad += "]";
+            cad = "["+cad;
         }
         return cad;
     }
