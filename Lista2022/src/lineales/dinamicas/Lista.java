@@ -82,13 +82,11 @@ public class Lista {
         }
         return exito;
     }//fin eliminar
-
+   
     
-    
-    public Lista clonar() {
+    public Lista clone() {
         Lista clon = new Lista();
         Nodo aux = this.cabecera;
-
         Nodo aux2, N;
         if (aux != null) {
             clon.cabecera = new Nodo(aux.getElemento(), null);
@@ -99,16 +97,58 @@ public class Lista {
                 N = new Nodo(aux.getElemento(), null);
                 aux2.setEnlace(N);
                 aux2 = N;
-
             }
         }
         clon.longitud = this.longitud;
-
         return clon;
-
+    }
+    public Lista obtenerMultiplos(int num) {
+        Lista clon = new Lista();
+        Nodo aux = this.cabecera;
+        Nodo aux2 = null, N;
+        int pos =1;
+        if (aux != null) {
+            while (aux2 == null) {
+                if ((pos%num)==0){
+                    clon.cabecera = new Nodo(aux.getElemento(), null);
+                    aux2 = clon.cabecera;
+                }else{
+                    aux = aux.getEnlace();
+                    pos++;
+                }
+            }
+            //recorro la lista original con aux
+            while (aux.getEnlace() != null) {
+                aux = aux.getEnlace();
+                pos++;
+                if ((pos%num)==0){
+                N = new Nodo(aux.getElemento(), null);
+                aux2.setEnlace(N);
+                aux2 = N;
+                }
+            }
+        }
+        clon.longitud = this.longitud;
+        return clon;
     }
     
- 
+    public void eliminarApariciones(Object x){
+        //
+        if(this.cabecera!=null){
+            Nodo aux=this.cabecera;
+            if (this.cabecera.getElemento()==x) {
+                this.cabecera=this.cabecera.getEnlace();
+                aux=this.cabecera;
+            }
+            while(aux.getEnlace()!=null){
+                if (aux.getEnlace().getElemento()==x) {
+                    aux.setEnlace(aux.getEnlace().getEnlace());
+                }
+                aux=aux.getEnlace();
+            }
+        }
+        
+    }
 
     public void copiar(Lista lista) {
         //se usa en grafo
@@ -137,7 +177,6 @@ public class Lista {
                 aux = aux.getEnlace();
                 auxPos++;
             }
-
             salida = aux.getElemento();
         }
         return salida;
@@ -172,13 +211,11 @@ public class Lista {
         if (nodoLista1 != null) {
             if (nodoLista2 != null) {
                 if (nodoLista1.equals(nodoLista2)) {
-                    rta = equalsAux(nodoLista1.getEnlace(),
-                            nodoLista2.getEnlace());
+                    rta = equalsAux(nodoLista1.getEnlace(),nodoLista2.getEnlace());
                 }
             } else {
                 rta = false;
             }
-
         } else {
             if (nodoLista2 != null) {
                 rta = false;
@@ -187,11 +224,9 @@ public class Lista {
         return rta;
     }
 
- 
     @Override
     public String toString() {
         String mensaje="";
-
         if (this.cabecera == null) {
             mensaje = "Ø";
         } else {
@@ -205,9 +240,7 @@ public class Lista {
                 aux = aux.getEnlace();
             }
             mensaje += "}";
-
         }
-
         return mensaje;
     }
 }

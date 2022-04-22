@@ -83,4 +83,25 @@ public class Cola {
         }
         return cadena;
     }
+    
+        public Cola clone() {
+        Cola clon = new Cola();
+        Nodo aux = this.frente;
+        Nodo aux2, N;
+        
+        if (aux != null) {
+            clon.frente = new Nodo(aux.getElemento(), null);
+            aux2 = clon.frente;
+            //recorro la lista original con aux
+            while (aux.getEnlace() != null) {
+                aux = aux.getEnlace();
+                N = new Nodo(aux.getElemento(), null);
+                aux2.setEnlace(N);
+                aux2 = N;
+            }
+            clon.fin=aux2;
+        }
+        
+        return clon;
+    }
 }
