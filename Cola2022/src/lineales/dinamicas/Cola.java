@@ -55,7 +55,16 @@ public class Cola {
     }
 
     public Object obtenerFrente() {
-        return this.frente.getElemento();
+        if(this.frente==null){
+            return null;
+        }else{
+           return this.frente.getElemento(); 
+        }
+        
+    }
+    
+    public Object obtenerFin() {
+        return this.fin.getElemento();
     }
 
     public void vaciar() {
@@ -104,4 +113,5 @@ public class Cola {
         
         return clon;
     }
+
 }

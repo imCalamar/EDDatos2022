@@ -108,7 +108,8 @@ public class Lista {
         Nodo aux2 = null, N;
         int pos =1;
         if (aux != null) {
-            while (aux2 == null) {
+            while (aux2 == null && aux!=null) { //insertar el primer nodo 
+
                 if ((pos%num)==0){
                     clon.cabecera = new Nodo(aux.getElemento(), null);
                     aux2 = clon.cabecera;
@@ -118,36 +119,48 @@ public class Lista {
                 }
             }
             //recorro la lista original con aux
-            while (aux.getEnlace() != null) {
-                aux = aux.getEnlace();
-                pos++;
-                if ((pos%num)==0){
-                N = new Nodo(aux.getElemento(), null);
-                aux2.setEnlace(N);
-                aux2 = N;
+            if (aux != null) {
+                while (aux.getEnlace() != null) {
+                    aux = aux.getEnlace();
+                    pos++;
+                    if ((pos%num)==0){
+                        N = new Nodo(aux.getElemento(), null);
+                        aux2.setEnlace(N);
+                        aux2 = N;
+                    }
                 }
             }
         }
         clon.longitud = this.longitud;
         return clon;
-    }
-    
+    }   
     public void eliminarApariciones(Object x){
         //
+        boolean seguir=true;
         if(this.cabecera!=null){
-            Nodo aux=this.cabecera;
-            if (this.cabecera.getElemento()==x) {
-                this.cabecera=this.cabecera.getEnlace();
-                aux=this.cabecera;
-            }
-            while(aux.getEnlace()!=null){
-                if (aux.getEnlace().getElemento()==x) {
-                    aux.setEnlace(aux.getEnlace().getEnlace());
+            
+            while(seguir && this.cabecera!=null){
+                if(this.cabecera.getElemento()==x) {
+                    this.cabecera = cabecera.getEnlace();
+                }else{
+                    seguir=false;
                 }
-                aux=aux.getEnlace();
+            }  
+            Nodo aux=this.cabecera;
+            if (aux != null) {
+                while(aux.getEnlace()!=null){
+                    if (aux.getEnlace().getElemento()==x) {
+                        if (aux.getEnlace().getEnlace()==null) {
+                            aux.setEnlace(null);
+                        }else{
+                            aux.setEnlace(aux.getEnlace().getEnlace());
+                        }  
+                    }else{
+                       aux=aux.getEnlace(); 
+                    }
+                }
             }
         }
-        
     }
 
     public void copiar(Lista lista) {
