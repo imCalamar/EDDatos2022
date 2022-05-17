@@ -45,8 +45,8 @@ public class ArbolGen {
     public boolean insertar(Object elem, Object padre) {
         boolean rta = false;
         if (this.raiz == null) {
-            NodoGen n = new NodoGen(elem);
-            this.raiz = n;
+            this.raiz = new NodoGen(elem);
+
             rta = true;
         } else {
             NodoGen aux = obtenerNodo(this.raiz, padre);
@@ -171,18 +171,39 @@ public class ArbolGen {
     }   
     public boolean sonFrontera(Lista unaLista) {
         int i=1;
-        boolean exito=true;
-
-        while(exito==true || i<unaLista.getLongitud()){
-            exito=sonFronteraAux(this.raiz,unaLista.recuperar(i),false);
-            i++;
+        boolean exito;
+        
+        if(!unaLista.esVacia()){
+            exito=verificarRepetidos(unaLista);    
+            
+            while(exito==true && i<=unaLista.getLongitud()){
+                exito=sonFronteraAux(this.raiz,unaLista.recuperar(i),false);
+                i++;
+            }  
+        }else{
+            exito=false;
         }
         return exito;
     }
+    private boolean verificarRepetidos(Lista unaLista){
+        boolean seguir=true;
+        int i=1;
+        while(seguir==true && i<=unaLista.getLongitud()){
+            Object elem=unaLista.recuperar(i);
+            int j=i+1;
+            while(seguir==true && j<=unaLista.getLongitud()){
+                if(unaLista.recuperar(j).equals(elem)){
+                    seguir=false;
+                }
+                j++;
+            }
+            i++;
+        }
+        return seguir;
+    }
     private boolean sonFronteraAux(NodoGen n, Object elem,boolean seguir) {
-        if (n!=null || seguir!=true){
-            
-            if(elem.equals(n.getElem())){
+        if (n!=null && seguir!=true){
+            if(elem.equals(n.getElem()) && n.getHijoIzquierdo()==null){
                 seguir=true;
             }
             if(n.getHijoIzquierdo() != null) {
