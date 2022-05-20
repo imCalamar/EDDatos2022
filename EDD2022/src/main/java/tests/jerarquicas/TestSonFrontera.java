@@ -21,8 +21,26 @@ public class TestSonFrontera {
     public static void main(String[] args) {
         // TODO code application logic here
         ArbolGen arbol=arbolPrueba();
-        Lista l = listaPrueba();
-        System.out.println("Resultado sonFrontera: " + (arbol.sonFrontera(l)));
+        Lista l1,l2,l3,l4;
+        l1 = listaPrueba();
+        l2=new Lista();
+        l3= listaPrueba2();
+        l4= listaPrueba3();
+        System.out.println("********************************");
+        System.out.println("*      Test sonFrontera        *");
+        System.out.println("********************************");
+        System.out.println("\n");
+        System.out.println("Resultado sonFrontera: " + (arbol.sonFrontera(l1)));
+        System.out.println("lista l1: "+ l1.toString());
+        System.out.println("\n");
+        System.out.println("Resultado sonFrontera lista vacia: " + (arbol.sonFrontera(l2)));        
+        System.out.println("lista l2: "+ l2.toString());
+        System.out.println("\n");
+        System.out.println("Resultado sonFrontera lista con elem repetidos: " + (arbol.sonFrontera(l3)));
+        System.out.println("lista l3: "+ l3.toString());
+        System.out.println("\n");
+        System.out.println("Resultado sonFrontera lista con elem que no son hojas: " + (arbol.sonFrontera(l4)));        
+        System.out.println("lista l4: "+ l4.toString());      
     }
 
     public static ArbolGen arbolPrueba(){   
@@ -56,22 +74,45 @@ public class TestSonFrontera {
                 + "\n                                                     40    45    55"
                 + "\n" + a.toString());
         System.out.println("\n");
-
         return a;
     }
-        public static Lista listaPrueba(){
-        //
+    public static Lista listaPrueba(){
         Lista l=new Lista();
-        
-        System.out.println("Inserto el 7 a la lista " + ((l.insertar(7,1)) ? sOk : sErr));
-        System.out.println("Inserto el 3 a la lista " + ((l.insertar(3,2)) ? sOk : sErr));
-        System.out.println("Inserto el 12 a la lista " + ((l.insertar(12,3)) ? sOk : sErr));
-        System.out.println("Inserto el 20 a la lista " + ((l.insertar(20,4)) ? sOk : sErr));
-        System.out.println("Inserto el 22 a la lista " + ((l.insertar(22,5)) ? sOk : sErr));
-        System.out.println("Inserto el 40 a la lista " + ((l.insertar(40,6)) ? sOk : sErr));
-        System.out.println("Inserto el 45 a la lista " + ((l.insertar(45,7)) ? sOk : sErr));
-        System.out.println("Inserto el 55 a la lista " + ((l.insertar(55,8)) ? sOk : sErr));
-        System.out.println(l.toString());
+        System.out.println("Inserto el 7 a la lista l1" + ((l.insertar(7,1)) ? sOk : sErr));
+        System.out.println("Inserto el 3 a la lista l1" + ((l.insertar(3,2)) ? sOk : sErr));
+        System.out.println("Inserto el 12 a la lista l1" + ((l.insertar(12,3)) ? sOk : sErr));
+        System.out.println("Inserto el 20 a la lista l1" + ((l.insertar(20,4)) ? sOk : sErr));
+        System.out.println("Inserto el 22 a la lista l1" + ((l.insertar(22,5)) ? sOk : sErr));
+        System.out.println("Inserto el 40 a la lista l1" + ((l.insertar(40,6)) ? sOk : sErr));
+        System.out.println("Inserto el 45 a la lista l1" + ((l.insertar(45,7)) ? sOk : sErr));
+        System.out.println("Inserto el 55 a la lista l1" + ((l.insertar(55,8)) ? sOk : sErr));
+        System.out.println("\n");
         return l;
+    }
+    public static Lista listaPrueba2(){
+        Lista l2=new Lista();
+        System.out.println("Inserto el 7 a la lista l3" + ((l2.insertar(7,1)) ? sOk : sErr));
+        System.out.println("Inserto el 3 a la lista l3" + ((l2.insertar(3,2)) ? sOk : sErr));
+        System.out.println("Inserto el 12 a la lista l3" + ((l2.insertar(12,3)) ? sOk : sErr));
+        System.out.println("Inserto el 20 a la lista l3" + ((l2.insertar(7,4)) ? sOk : sErr));
+        System.out.println("Inserto el 22 a la lista l3" + ((l2.insertar(22,5)) ? sOk : sErr));
+        System.out.println("Inserto el 40 a la lista l3" + ((l2.insertar(40,6)) ? sOk : sErr));
+        System.out.println("Inserto el 45 a la lista l3" + ((l2.insertar(45,7)) ? sOk : sErr));
+        System.out.println("Inserto el 55 a la lista l3" + ((l2.insertar(55,8)) ? sOk : sErr));
+        System.out.println("\n");
+        return l2;
+    }
+    public static Lista listaPrueba3(){
+        Lista l2=new Lista();
+        System.out.println("Inserto el 7 a la lista l4" + ((l2.insertar(7,1)) ? sOk : sErr));
+        System.out.println("Inserto el 3 a la lista l4" + ((l2.insertar(3,2)) ? sOk : sErr));
+        System.out.println("Inserto el 12 a la lista l4" + ((l2.insertar(12,3)) ? sOk : sErr));
+        System.out.println("Inserto el 20 a la lista l4" + ((l2.insertar(7,4)) ? sOk : sErr));
+        System.out.println("Inserto el 22 a la lista l4" + ((l2.insertar(30,5)) ? sOk : sErr));
+        System.out.println("Inserto el 40 a la lista l4" + ((l2.insertar(40,6)) ? sOk : sErr));
+        System.out.println("Inserto el 45 a la lista l4" + ((l2.insertar(45,7)) ? sOk : sErr));
+        System.out.println("Inserto el 55 a la lista l4" + ((l2.insertar(55,8)) ? sOk : sErr));
+        System.out.println("\n");
+        return l2;
     }
 }
