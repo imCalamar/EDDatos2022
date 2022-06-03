@@ -5,12 +5,16 @@
  */
 package TestConjuntista;
 
-import Conjuntistas.ArbolBB;
+import Conjuntistas.ArbolAVL;
 
-public class TestAbb {
-
+/**
+ *
+ * @author Joaquin.coder
+ */
+public class TestAVL {
+    
     public static void main(String[] args) {
-        ArbolBB arbol = new ArbolBB();
+        ArbolAVL arbol = new ArbolAVL();
 
         arbol.insertar(30);
         arbol.insertar(25);
@@ -21,7 +25,6 @@ public class TestAbb {
         arbol.insertar(22);
         arbol.insertar(20);
 
-        System.out.println("sdggagfgfgfg");
         System.out.println(arbol.toString());
 
 //        arbol.eliminar(23);
@@ -30,4 +33,5 @@ public class TestAbb {
 //        System.out.println(arbol.toString());
     }
 
+    
 }

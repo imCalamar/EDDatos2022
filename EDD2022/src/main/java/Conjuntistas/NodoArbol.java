@@ -6,6 +6,12 @@ public class NodoArbol {
     private NodoArbol derecho;
     private Comparable elemento;
 
+    public NodoArbol(Comparable elem1, NodoArbol izq1, NodoArbol der1) {
+        this.elemento = elem1;
+        this.izquierdo = izq1;
+        this.derecho = der1;
+    }
+
     public NodoArbol(Comparable elemento) {
         this.elemento = elemento;
         this.izquierdo = null;
@@ -13,7 +19,9 @@ public class NodoArbol {
     }
 
     public NodoArbol() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.elemento = null;
+        this.izquierdo = null;
+        this.derecho = null;
     }
 
     public void setDerecho(NodoArbol nodo) {
@@ -24,7 +32,7 @@ public class NodoArbol {
         this.izquierdo = nodo;
     }
 
-    public void setElemento(Comparable elemento) {
+    public void setElem(Comparable elemento) {
         this.elemento = elemento;
     }
 
@@ -36,7 +44,7 @@ public class NodoArbol {
         return this.derecho;
     }
 
-    public Comparable getElemento() {
+    public Comparable getElem() {
         return this.elemento;
     }
 }

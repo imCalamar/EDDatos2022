@@ -5,11 +5,6 @@
  */
 package lineales.dinamicas;
 
-/**
- *
- * @author Joaquin Arias FAI-1629
- */
-
 public class Cola {
 
     private Nodo frente;

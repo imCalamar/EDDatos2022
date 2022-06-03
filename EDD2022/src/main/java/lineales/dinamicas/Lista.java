@@ -1,12 +1,5 @@
 package  lineales.dinamicas;
 
-import Utiles.*;
-
-/**
- *
- * @author Joaquin Arias FAI-1629
- */
-
 public class Lista {
 
     private int longitud;
@@ -81,8 +74,7 @@ public class Lista {
             this.longitud--;
         }
         return exito;
-    }//fin eliminar
-   
+    }
     
     public Lista clone() {
         Lista clon = new Lista();
@@ -102,67 +94,6 @@ public class Lista {
         clon.longitud = this.longitud;
         return clon;
     }
-    public Lista obtenerMultiplos(int num) {
-        Lista clon = new Lista();
-        Nodo aux = this.cabecera;
-        Nodo aux2 = null, N;
-        int pos =1;
-        if (aux != null) {
-            while (aux2 == null && aux!=null) { //insertar el primer nodo 
-
-                if ((pos%num)==0){
-                    clon.cabecera = new Nodo(aux.getElemento(), null);
-                    aux2 = clon.cabecera;
-                }else{
-                    aux = aux.getEnlace();
-                    pos++;
-                }
-            }
-            //recorro la lista original con aux
-            if (aux != null) {
-                while (aux.getEnlace() != null) {
-                    aux = aux.getEnlace();
-                    pos++;
-                    if ((pos%num)==0){
-                        N = new Nodo(aux.getElemento(), null);
-                        aux2.setEnlace(N);
-                        aux2 = N;
-                    }
-                }
-            }
-        }
-        clon.longitud = this.longitud;
-        return clon;
-    }   
-    public void eliminarApariciones(Object x){
-        //
-        boolean seguir=true;
-        if(this.cabecera!=null){
-            
-            while(seguir && this.cabecera!=null){
-                if(this.cabecera.getElemento()==x) {
-                    this.cabecera = cabecera.getEnlace();
-                }else{
-                    seguir=false;
-                }
-            }  
-            Nodo aux=this.cabecera;
-            if (aux != null) {
-                while(aux.getEnlace()!=null){
-                    if (aux.getEnlace().getElemento()==x) {
-                        if (aux.getEnlace().getEnlace()==null) {
-                            aux.setEnlace(null);
-                        }else{
-                            aux.setEnlace(aux.getEnlace().getEnlace());
-                        }  
-                    }else{
-                       aux=aux.getEnlace(); 
-                    }
-                }
-            }
-        }
-    }
-
     public void copiar(Lista lista) {
         //se usa en grafo
         //metodo que permite "copiar" los elementos 
@@ -239,7 +170,7 @@ public class Lista {
 
     @Override
     public String toString() {
-        String mensaje="";
+        String mensaje;
         if (this.cabecera == null) {
             mensaje = "Ø";
         } else {

@@ -5,12 +5,10 @@
  */
 package Conjuntistas;
 
-import lineales.dinamicas.Lista;
-
 public class ArbolHeap {
 
     int TAM;
-    private Comparable[] arreglo;
+    private final Comparable[] arreglo;
     int ultimo;
 
     public ArbolHeap() {
@@ -53,7 +51,7 @@ public class ArbolHeap {
     int res = 0;
 
     public Comparable recuperarCima() {
-        Comparable res = 0;
+        Comparable res =0;
         if (arreglo[0] != null) {
             res = arreglo[1];
         }

@@ -86,7 +86,7 @@ public class ArbolGen {
     public Lista ancestros(Object elem) {
         Lista l1 = new Lista();
         listarAncestrosAux(this.raiz, l1, elem);
-        l1.eliminar(l1.getLongitud());
+        l1.eliminar(1);
         return l1;
     }
     private void listarAncestrosAux(NodoGen n, Lista l1, Object elem) {
@@ -323,36 +323,8 @@ public class ArbolGen {
             }
         }
         return niv1;
-    }   
-    public int grado(){
-        int g;
-        if(this.raiz==null){
-            g=-1;
-        }else{
-            g=gradoRec(this.raiz,0,0);
-        }
-        
-        return g;
     }
-    private int gradoRec(NodoGen n,int aux,int g){
-        if(n!=null){
-            
-            gradoRec(n.getHijoIzquierdo(),aux,g);
-
-            NodoGen nodoAux=n;
-            while(nodoAux!=null){
-                aux++;
-                nodoAux=nodoAux.getHermanoDerecho();
-            }
-            if(aux>g){
-                g=aux;
-                aux=0;
-            } 
-            gradoRec(n.getHermanoDerecho(),aux,g);
-        }
-        System.out.println(g);
-        return g;
-    }  
+    
     @Override
     public String toString() {
         return toStringAux(this.raiz);
@@ -382,4 +354,52 @@ public class ArbolGen {
         }
         return cad;
     }//fin auxToString
+//    public int grado(){
+//        int g;
+//        if(this.raiz==null){
+//            g=-1;
+//        }else{
+//            g=gradoRec(this.raiz,0);
+//        }
+//        return g;
+//    }
+//      
+//    public int gradoSubarbol(Object n){
+//        int g;
+//        if(this.raiz==null){
+//            g=-1;
+//        }else{
+//            NodoGen aux = obtenerNodo(this.raiz, n);
+//            if(aux!=null){
+//                System.out.println("etro metodo con: "+aux.getElem());
+//                g=gradoRec(aux,0);
+//            }else{
+//                g=-1;
+//            }
+//            
+//        }
+//        return g;
+//    }
+//    private int gradoRec(NodoGen n,int g){
+//        int aux=0;
+//        if(n!=null){
+//            System.out.println("nodo actual: "+ n.getElem());
+//
+//            
+//            NodoGen nodoAux=n.getHijoIzquierdo();
+//            while(nodoAux!=null){                  
+//                aux++;System.out.println("grado: "+ aux);
+//                nodoAux=nodoAux.getHermanoDerecho();
+//            }
+//            if(aux>g){
+//                g=aux;
+//                System.out.println("grado Final: "+ g);
+//                
+//            } 
+//            g=gradoRec(n.getHermanoDerecho(),g); 
+//        }
+//        return g;
+//    }
+//    
+// Grado no funciona correctamente
 }
