@@ -42,24 +42,34 @@ public class ArbolGen {
     public boolean esVacio() {
         return (this.raiz == null);
     }   
-    public boolean insertar(Object elem, Object padre) {
-        boolean rta = false;
-        if (this.raiz == null) {
-            this.raiz = new NodoGen(elem);
-
-            rta = true;
-        } else {
-            NodoGen aux = obtenerNodo(this.raiz, padre);
-            if (aux != null) {
-                //se encontro el padre ahora lo insertamos
-                NodoGen n = new NodoGen(elem);
-                n.setHermanoDerecho(aux.getHijoIzquierdo());
-                aux.setHijoIzquierdo(n);
-                rta = true;
+    public boolean insertar(Object nuevoElem,Object elementoPadre){
+        //
+        boolean exito=true;
+        NodoGen padre;
+        if(this.raiz==null){
+            this.raiz=new NodoGen(nuevoElem);
+        }else{  
+            padre=obtenerNodo(this.raiz,elementoPadre);
+            if(padre!=null){
+                if(padre.getHijoIzquierdo()==null){
+                    padre.setHijoIzquierdo(new NodoGen(nuevoElem));
+                }else{
+                    NodoGen aux=padre.getHijoIzquierdo();
+                    while(aux!=null){
+                        if(aux.getHermanoDerecho()==null){
+                            aux.setHermanoDerecho(new NodoGen(nuevoElem));
+                            aux=aux.getHermanoDerecho().getHermanoDerecho();
+                        }else{
+                            aux=aux.getHermanoDerecho();
+                        }
+                    }
+                }
+            }else{
+                exito=false;
             }
         }
-        return rta;
-    }  
+        return exito;
+    }
     public boolean pertenece(Object elem) {
         NodoGen aux = obtenerNodo(this.raiz, elem);
         //si el elemento encontro encontes aux es 
@@ -241,21 +251,27 @@ public class ArbolGen {
             }
         }
     }  
-    public Lista listarEntreNiveles(int n1,int n2){
-        Lista ls=listarEntreNivelesAux(this.raiz,0,n1,n2);
+public Lista listarEntreNiveles(int n1,int n2){
+        System.out.println(this.raiz.getElem());
+        Lista ls = new Lista(); 
+       
+        ls= listarEntreNivelesAux(this.raiz,0,n1,n2,ls);
         return ls;
     }
-    private Lista listarEntreNivelesAux(NodoGen n,int nivel,int n1,int n2){
-        Lista ls=new Lista();
+    private Lista listarEntreNivelesAux(NodoGen n, int nivel, int n1, int n2, Lista ls){
         if(n!=null){
             if(n.getHijoIzquierdo()!=null){
-                listarEntreNivelesAux(n.getHijoIzquierdo(),nivel+1,n1,n2);
+                System.out.println(n.getHijoIzquierdo().getElem());
+                ls=listarEntreNivelesAux(n.getHijoIzquierdo(),nivel+1,n1,n2,ls);
             }
-            if(nivel==n1||nivel==n2){
+
+            if(nivel>=n1 && nivel<=n2){
+                
                 ls.insertar(n.getElem(),ls.getLongitud()+1);
+                System.out.println(ls.toString());
             }
             if(n.getHermanoDerecho()!=null){
-                listarEntreNivelesAux(n.getHermanoDerecho(),nivel,n1,n2);
+                ls=listarEntreNivelesAux(n.getHermanoDerecho(),nivel,n1,n2,ls);
             }
         }
         return ls;

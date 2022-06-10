@@ -43,6 +43,8 @@ public class TestSonFrontera {
         System.out.println("Resultado sonFrontera lista con elem inexistentes en el arbol generico: " + (arbol.sonFrontera(l5)));
         System.out.println("lista l3: "+ l5.toString());
         System.out.println("\n");
+        System.out.println("SDFDSFGDSG");
+        System.out.println("listar entre niveles: " + arbol.listarEntreNiveles(1,2).toString());
     }
 
     public static ArbolGen arbolPrueba(){   

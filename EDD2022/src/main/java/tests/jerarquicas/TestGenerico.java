@@ -168,7 +168,8 @@ public class TestGenerico {
         System.out.println("Busco el nivel 55. Tiene que dar 3: " + sOk + " --> " + (((int) a.nivel(55) == 3) ? sOk : sErr));
 
         System.out.println("Busco nivel de elemento inexistente: Tiene que dar -1: " + a.nivel(1000));
-
+        
+        
         System.out.println("\n\n");
         System.out.println(ANSI_YELLOW_BACKGROUND + "----------------------------------------------------------------------------------------------------------"
                 + "----------------------------------------------------------------------------------------" + RESET);
