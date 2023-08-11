@@ -178,7 +178,27 @@ public class ArbolGen {
                 }
             }
         }
-    }   
+    }
+    
+    public Lista listarHastaNivel(int niv){
+        return listarHastaNivelRec(this.raiz, niv, 0,new Lista());
+    }
+    private Lista listarHastaNivelRec(NodoGen nodo,int niv, int i,Lista l){
+        //
+        if(nodo!=null && niv>=i){
+            l.insertar(nodo.getElem(),l.getLongitud()+1);
+            
+            if(nodo.getHijoIzquierdo()!=null && (niv>= i+1)){
+                NodoGen aux = nodo.getHijoIzquierdo();
+                while(aux!=null){
+                    l=listarHastaNivelRec(aux,niv,i+1,l);
+                    aux=aux.getHermanoDerecho();
+                }
+            }
+        }
+        return l;
+    }
+           
     public boolean sonFrontera(Lista unaLista) {
         int i=1;
         boolean exito;
@@ -259,19 +279,20 @@ public Lista listarEntreNiveles(int n1,int n2){
         return ls;
     }
     private Lista listarEntreNivelesAux(NodoGen n, int nivel, int n1, int n2, Lista ls){
-        if(n!=null){
+        if(n!=null){   
             if(n.getHijoIzquierdo()!=null){
-                System.out.println(n.getHijoIzquierdo().getElem());
                 ls=listarEntreNivelesAux(n.getHijoIzquierdo(),nivel+1,n1,n2,ls);
             }
-
             if(nivel>=n1 && nivel<=n2){
-                
                 ls.insertar(n.getElem(),ls.getLongitud()+1);
-                System.out.println(ls.toString());
             }
-            if(n.getHermanoDerecho()!=null){
-                ls=listarEntreNivelesAux(n.getHermanoDerecho(),nivel,n1,n2,ls);
+            
+            if(n.getHijoIzquierdo()!=null && (nivel<=n2+1)){
+                NodoGen aux = n.getHijoIzquierdo().getHermanoDerecho();
+                while(aux!=null){
+                    ls=listarEntreNivelesAux(aux,nivel+1,n1,n2,ls);
+                    aux=aux.getHermanoDerecho();
+                }
             }
         }
         return ls;

@@ -71,10 +71,10 @@ public class ArbolBB {
             if ((n.getElem().compareTo(e)) > 0) {//si donde estoy parado es mayor que el elemento e voy a la izquierda
                 if (n.getIzquierdo() != null) {
                     exito = insertarAux(n.getIzquierdo(), e);
-                } else {//si donde estoy es menor que el que busco voy a la derecha
+                } else {
                     n.setIzquierdo(new NodoArbol(e));
                 }
-            } else {
+            } else {//si donde estoy es menor que el que busco voy a la derecha
                 if (n.getDerecho() != null) {
                     exito = insertarAux(n.getDerecho(), e);
                 } else {

@@ -45,6 +45,8 @@ public class TestSonFrontera {
         System.out.println("\n");
         System.out.println("SDFDSFGDSG");
         System.out.println("listar entre niveles: " + arbol.listarEntreNiveles(1,2).toString());
+        System.out.println("SDFDSFGDSG");
+        System.out.println("listar HASTA nivel 3: " + arbol.listarHastaNivel(2).toString());
     }
 
     public static ArbolGen arbolPrueba(){   
